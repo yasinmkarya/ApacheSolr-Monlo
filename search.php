@@ -29,6 +29,7 @@
 				<li><a href="signin.php"><span class="glyphicon glyphicon-user"></span> SIGN UP </a></li>
 				<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> LOGIN </a></li>
 			</ul>
+			-->
 		 </div>
 		</div>
 		</div>
