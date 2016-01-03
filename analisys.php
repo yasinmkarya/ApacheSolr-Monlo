@@ -16,8 +16,8 @@
                 <div>
                     <ul class="nav navbar-nav">
                         <li><a href="index.php"><b>HOME</b></a></li>
-                        <li class="active"><a href="search.php"><b>SEARCH</b></a></li>
-                        <li><a href="analysis.php"><b>ANALYSIS</b></a></li>
+                        <li><a href="search.php"><b>SEARCH</b></a></li>
+                        <li class="active"><a href="analysis.php"><b>ANALYSIS</b></a></li>
                     </ul>
                 </div>
             </div>
@@ -48,67 +48,7 @@
         <div class="container" style="width:auto">
 			<div class="col-md-12">
 	        <div class="row">
-            <table class="table" style="font-size:12px">
-                <thead>
-                    <tr>
-							<th width=auto>Time</th>
-							<th width=auto>Saverity</th>
-							<th width=auto>Hostname</th>
-							<th width=auto>Address</th>
-							<th width=auto>User</th>
-							<th width=auto>Message</th>	
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>28-Nov-2015 03:24:38</td>
-                        <td>info</td>
-                        <td>Srx650-Core</td>
-                        <td>10.254.0.1</td>
-                        <td>RT_FLOW</td>	                        
-                        <td>RT_FLOW_SESSION_CREATE: session created 10.252.252.4/59915->4.2.2.1/53 junos-dns-udp 103.233.100.2/7636->4.2.2.1/53 Data-Center-source-nat-rule None 17 Data-Center-TelU-to-internet Data-Center-TelU internet 358200 N/A(N/A) ae0.0 UNKNOWN UNKNOWN UNKNOWN</td>	                        
-                    </tr>
-                    <tr>
-                        <td>28-Nov-2015 03:24:38</td>
-                        <td>info</td>
-                        <td>Srx650-Core</td>
-                        <td>10.254.0.1</td>
-                        <td>RT_FLOW</td>	                        
-                        <td>RT_FLOW_SESSION_CREATE: session created 10.252.252.4/59915->4.2.2.1/53 junos-dns-udp 103.233.100.2/7636->4.2.2.1/53 Data-Center-source-nat-rule None 17 Data-Center-TelU-to-internet Data-Center-TelU internet 358200 N/A(N/A) ae0.0 UNKNOWN UNKNOWN UNKNOWN</td>	                        
-                    </tr>
-                    <tr>
-								<td>28-Nov-2015 03:24:38</td>
-                        <td>info</td>
-                        <td>Srx650-Core</td>
-                        <td>10.254.0.1</td>
-                        <td>RT_FLOW</td>	                        
-                        <td>RT_FLOW_SESSION_CREATE: session created 10.252.252.4/59915->4.2.2.1/53 junos-dns-udp 103.233.100.2/7636->4.2.2.1/53 Data-Center-source-nat-rule None 17 Data-Center-TelU-to-internet Data-Center-TelU internet 358200 N/A(N/A) ae0.0 UNKNOWN UNKNOWN UNKNOWN</td>	                        
-                    </tr>
-                </tbody>
-            </table>
-            <ul class="pagination">
-                <li>
-                    <a href="i">Prev</a>
-                </li>
-                <li>
-                    <a href="#">1</a>
-                </li>
-                <li>
-                    <a href="#">2</a>
-                </li>
-                <li>
-                    <a href="#">3</a>
-                </li>
-                <li>
-                    <a href="#">4</a>
-                </li>
-                <li>
-                    <a href="#">5</a>
-                </li>
-                <li>
-                    <a href="#">Next</a>
-                </li>
-            </ul>
+				
 		    </div>
         	</div>        
         </div>
