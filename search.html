@@ -1,0 +1,119 @@
+<html>
+
+<head>
+    <title>New Silo - Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="dist/sisolr.js" charset="utf-8"></script>
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="dist/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/iconsS.png" type="image/png">
+</head>
+
+<body data-ng-app="Sisolr" data-ng-controller="search">
+    <div class="navbar navbar-inverse">
+        <div class="container-fluisd">
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    <img height="20" alt="Brand" src="images/iconsS.png" class="img-rounded">
+                </a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="home.html"><b>HOME</b></a></li>
+                    <li class="active"><a href="search.html"><b>SEARCH</b></a></li>
+                    <li><a href="analisys.html"><b>ANALYSIS</b></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <h1 class="text-center text-danger"><i class="fa fa-star fa-fw"></i>S I L O</h1>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-offset-3 col-md-6">
+                  <form role="form" data-ng-submit="search()">
+                      <div class="form-group">
+                          <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Enter your keyword" data-ng-model="keyword">
+                              <span class="input-group-btn">
+                                  <button class="btn btn-danger" type="submit">Search</button>
+                              </span>
+                          </div>
+                          <br>
+                          Filter:&nbsp;
+                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('timegenerated:' + now() + '*')">Time</button>
+                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('syslogpriority-text:*')">Saverity</button>
+                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('hostname:*')">Hostname</button>
+                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('fromhost-ip:*')">Address</button>
+                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('programname:*')">User</button>
+                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('msg:*')">Message</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+    <div class="container" style="width:auto">
+        <div class="col-md-12">
+            <div class="row">
+                <div style="text-align: center;">
+                    <ul class="pagination">
+                        <li data-ng-class="{'disabled': pageLevel === 0}">
+                            <a href="#" data-ng-click="prev()">Prev</a>
+                        </li>
+                        <li data-ng-repeat="line in paging track by $index" data-ng-class="{'active': line === currentPage}">
+                            <a href="#" data-ng-click="goToPage(line)">{{line}}</a>
+                        </li>
+                        <li data-ng-class="{'disabled': currentNext < 2001}">
+                            <a href="#" data-ng-click="next()">Next</a>
+                        </li>
+                    </ul>
+                </div>
+                <table class="table table-condensed table-striped table-bordered" style="font-size:12px">
+                    <thead>
+                        <tr>
+                            <th width="10%">Time</th>
+                            <th width="5%">Saverity</th>
+                            <th width="10%">Hostname</th>
+                            <th width=auto>Address</th>
+                            <th width=auto>User</th>
+                            <th width=auto>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="line in data.response.docs track by $index">
+                            <td>{{formatTgl(line.timegenerated)}}</td>
+                            <td><span class="label" data-ng-class="{'label-default': line['syslogpriority-text'] === 'debug', 'label-info': line['syslogpriority-text'] === 'info', 'label-warning': line['syslogpriority-text'] === 'warning' || line['syslogpriority-text'] === 'notice', 'label-danger': line['syslogpriority-text'] === 'err' || line['syslogpriority-text'] === 'crit'}">{{line['syslogpriority-text'].toUpperCase()}}</span></td>
+                            <td>{{line.hostname}}</td>
+                            <td>{{line['fromhost-ip']}}</td>
+                            <td>{{line.programname}}</td>
+                            <td>{{line.msg}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="text-align: center;">
+                    <ul class="pagination">
+                        <li data-ng-class="{'disabled': pageLevel === 0}">
+                            <a href="#" data-ng-click="prev()">Prev</a>
+                        </li>
+                        <li data-ng-repeat="line in paging track by $index" data-ng-class="{'active': line === currentPage}">
+                            <a href="#" data-ng-click="goToPage(line)">{{line}}</a>
+                        </li>
+                        <li data-ng-class="{'disabled': currentNext < 2001}">
+                            <a href="#" data-ng-click="next()">Next</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

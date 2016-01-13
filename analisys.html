@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <title>New Silo - Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/Chart.js/Chart.js" charset="utf-8"></script>
+    <script src="dist/sisolr.js" charset="utf-8"></script>
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="dist/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="images/iconsS.png" type="image/png" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body data-ng-app="Sisolr" data-ng-controller="analisys">
+    <div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    <img height="20" alt="Brand" src="images/iconsS.png" class="img-rounded">
+                </a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li><a href="home.html"><b>HOME</b></a></li>
+                    <li><a href="search.html"><b>SEARCH</b></a></li>
+                    <li class="active"><a href="analisys.html"><b>ANALYSIS</b></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12" style="text-align:center">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">Log Per Day</div>
+                      <div class="panel-body">
+                          <canvas id="barChart" width="1200" height="400"></canvas>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-4" style="text-align:center">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">Saverity</div>
+                      <div class="panel-body">
+                          <canvas id="saverityDChart" width="300" height="300"></canvas>
+                      </div>
+                  </div>
+                  <table class="table table-bordered table-condensed">
+                    <thead>
+                      <tr class="success">
+                        <th style="text-align:center">Saverity Type</th>
+                        <th style="text-align:center">Count</th>
+                      </tr>
+                      <tbody style="font-size:14px">
+                        <tr data-ng-repeat="line in saverity track by $index">
+                          <th>{{line.type}}</th>
+                          <th>{{line.count}}</th>
+                        </tr>
+                      </tbody>
+                    </thead>
+                  </table>
+              </div>
+              <div class="col-md-4" style="text-align:center">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">User</div>
+                      <div class="panel-body">
+                          <canvas id="prognameDChart" width="300" height="300"></canvas>
+                      </div>
+                  </div>
+                  <table class="table table-bordered table-condensed">
+                    <thead>
+                      <tr class="success">
+                        <th style="text-align:center">Saverity Type</th>
+                        <th style="text-align:center">Count</th>
+                      </tr>
+                      <tbody style="font-size:14px">
+                        <tr data-ng-repeat="line in user track by $index">
+                          <th>{{line.name}}</th>
+                          <th>{{line.nameCount}}</th>
+                        </tr>
+                      </tbody>
+                    </thead>
+                  </table>
+              </div>
+              <div class="col-md-4" style="text-align:center">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">Hostname</div>
+                      <div class="panel-body">
+                          <canvas id="hostDChart" width="300" height="300"></canvas>
+                      </div>
+                  </div>
+                  <table class="table table-bordered table-condensed">
+                    <thead>
+                      <tr class="success">
+                        <th style="text-align:center">Saverity Type</th>
+                        <th style="text-align:center">Count</th>
+                      </tr>
+                      <tbody style="font-size:14px">
+                        <tr data-ng-repeat="line in host track by $index">
+                          <th>{{line.hostname}}</th>
+                          <th>{{line.hostCount}}</th>
+                        </tr>
+                      </tbody>
+                    </thead>
+                  </table>
+              </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>
