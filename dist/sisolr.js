@@ -1,5 +1,5 @@
 var app = angular.module('Sisolr', []);
-var server = 'http://localhost:8080',
+var server = 'http://10.14.211.5:8983',
     path = '/solr/core0';
 
 function formatTgl(str) {
@@ -28,10 +28,10 @@ app.controller('search', function($scope, $http) {
     $scope.currentPage = 1;
     $scope.pageLevel = 0;
     $scope.data = {};
-    $scope.keyword = 'msg:*';
+    $scope.keyword = '&fq=*:*';
 
     function _getJSONP(start, cb) {
-        $http.jsonp(server + path + '/select?q=' + $scope.keyword + '&start=' + start + '&rows=100&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
+        $http.jsonp(server + path + '/select?q=*%3A*' + $scope.keyword + '&start=' + start + '&rows=100&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
             .then(function(json) {
                 cb(json);
             });
@@ -61,7 +61,7 @@ app.controller('search', function($scope, $http) {
     $scope.search = function() {
         $scope.pageLevel = 0;
         if ($scope.keyword === '') {
-            $scope.keyword = 'msg:*';
+            $scope.keyword = '&fq=*:*';
             _getJSONP(0, _view);
         } else {
             _getJSONP(0, _view);
@@ -81,16 +81,16 @@ app.controller('search', function($scope, $http) {
     }
 
     $scope.addQuery = function(query) {
-        if ($scope.keyword === '' || $scope.keyword === 'msg:*') {
-            $scope.keyword = query;
+        if ($scope.keyword === '' || $scope.keyword === '&fq=*:*') {
+            $scope.keyword = '&fq='+query;
         } else {
-            $scope.keyword = $scope.keyword + ' ' + query;
+            $scope.keyword = $scope.keyword + '&fq=' + query;
         }
     }
 
     $scope.goToPage = function(number) {
         $scope.currentPage = number;
-        if ($scope.keyword === '') $scope.keyword = 'msg:*';
+        if ($scope.keyword === '') $scope.keyword = '&fq=*:*';
         _getJSONP(100 * (number - 1), _view);
     }
 

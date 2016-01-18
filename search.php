@@ -7,7 +7,7 @@
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
     </head>
-    <body>	
+    <body>
         <div class="navbar navbar-inverse">
             <div class="container-fluisd">
                 <div class="navbar-header">
@@ -56,7 +56,7 @@
 							<th width=auto>Hostname</th>
 							<th width=auto>Address</th>
 							<th width=auto>User</th>
-							<th width=auto>Message</th>	
+							<th width=auto>Message</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,24 +65,24 @@
                         <td>info</td>
                         <td>Srx650-Core</td>
                         <td>10.254.0.1</td>
-                        <td>RT_FLOW</td>	                        
-                        <td>RT_FLOW_SESSION_CREATE: session created 10.252.252.4/59915->4.2.2.1/53 junos-dns-udp 103.233.100.2/7636->4.2.2.1/53 Data-Center-source-nat-rule None 17 Data-Center-TelU-to-internet Data-Center-TelU internet 358200 N/A(N/A) ae0.0 UNKNOWN UNKNOWN UNKNOWN</td>	                        
+                        <td>RT_FLOW</td>
+                        <td>RT_FLOW_SESSION_CREATE: session created 10.252.252.4/59915->4.2.2.1/53 junos-dns-udp 103.233.100.2/7636->4.2.2.1/53 Data-Center-source-nat-rule None 17 Data-Center-TelU-to-internet Data-Center-TelU internet 358200 N/A(N/A) ae0.0 UNKNOWN UNKNOWN UNKNOWN</td>
                     </tr>
                     <tr>
                         <td>28-Nov-2015 03:24:38</td>
                         <td>info</td>
                         <td>Srx650-Core</td>
                         <td>10.254.0.1</td>
-                        <td>RT_FLOW</td>	                        
-                        <td>RT_FLOW_SESSION_CREATE: session created 10.252.252.4/59915->4.2.2.1/53 junos-dns-udp 103.233.100.2/7636->4.2.2.1/53 Data-Center-source-nat-rule None 17 Data-Center-TelU-to-internet Data-Center-TelU internet 358200 N/A(N/A) ae0.0 UNKNOWN UNKNOWN UNKNOWN</td>	                        
+                        <td>RT_FLOW</td>
+                        <td>RT_FLOW_SESSION_CREATE: session created 10.252.252.4/59915->4.2.2.1/53 junos-dns-udp 103.233.100.2/7636->4.2.2.1/53 Data-Center-source-nat-rule None 17 Data-Center-TelU-to-internet Data-Center-TelU internet 358200 N/A(N/A) ae0.0 UNKNOWN UNKNOWN UNKNOWN</td>
                     </tr>
                     <tr>
 								<td>28-Nov-2015 03:24:38</td>
                         <td>info</td>
                         <td>Srx650-Core</td>
                         <td>10.254.0.1</td>
-                        <td>RT_FLOW</td>	                        
-                        <td>RT_FLOW_SESSION_CREATE: session created 10.252.252.4/59915->4.2.2.1/53 junos-dns-udp 103.233.100.2/7636->4.2.2.1/53 Data-Center-source-nat-rule None 17 Data-Center-TelU-to-internet Data-Center-TelU internet 358200 N/A(N/A) ae0.0 UNKNOWN UNKNOWN UNKNOWN</td>	                        
+                        <td>RT_FLOW</td>
+                        <td>RT_FLOW_SESSION_CREATE: session created 10.252.252.4/59915->4.2.2.1/53 junos-dns-udp 103.233.100.2/7636->4.2.2.1/53 Data-Center-source-nat-rule None 17 Data-Center-TelU-to-internet Data-Center-TelU internet 358200 N/A(N/A) ae0.0 UNKNOWN UNKNOWN UNKNOWN</td>
                     </tr>
                 </tbody>
             </table>
@@ -110,7 +110,7 @@
                 </li>
             </ul>
 		    </div>
-        	</div>        
+        	</div>
         </div>
 </body>
 </html>
