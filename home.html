@@ -5,68 +5,130 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 				<link rel="shortcut icon" href="images/iconsS.png" type="image/png">
 				<link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-				<link href="dist//bootstrap.css" rel="stylesheet" type="text/css">
+				<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+				<link href="dist/extendstyle.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="bower_components/bootstrap/dist/js//bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	</head>
   <body>
-		<div class="navbar navbar-inverse">
-		    <div class="container-fluisd">
-		        <div class="navbar-header">
-		            <a class="navbar-brand">
-									<img height="20" alt="Brand" src="images/iconsS.png">
-								</a>
-		        </div>
-		        <div>
-		            <ul class="nav navbar-nav">
-									 <li class="active"> <a href="home.html"><b>HOME</b></a> </li>
-									 <li> <a href="search.html"><b>SEARCH</b></a> </li>
-									 <li><a href="analisys.html"><b>ANALYSIS</b></a></li>
-		            </ul>
-		        </div>
-		    </div>
-	  	</div>
-     	<div class="cover">
-         <div class="background-image-fixed cover-image" style="background-image : url('./images/datacenter.png')"></div>
-         <div class="container">
-             <div class="row">
-                 <div class="col-md-12 text-center">
-                     <strong>
-											 <h1 class="text text-warning">WELCOME TO SILO</h1>
-                   		 <p class="text text-warning"> CENTRAL LOGS DATA CENTER TELKOM UNIVERSITY </p>
-									 	 </strong>
-										 <br>
-                     <a class="btn btn-lg btn-primary" href="search.html">Go to page search ..</a>
-                 </div>
-             </div>
-         </div>
-     	</div>
-     	<div class="section">
-         <div class="container">
-             <div class="row">
-                 <div class="col-md-12">
-                     <h1 class="text-center text-danger">TEAM</h1>
-                     <p class="text-center">We are a group of skilled individuals.</p>
-                 </div>
-             </div>
-             <div class="row text-center">
-                 <div class="col-md-4 text-center">
-									 	 <img class="img-circle " src="images/userS.png" alt="Images" height="200px" width="200px" />
-                     <h3 class="text-center">Fazmah Arif Yulianto S.T, M.T</h3>
-                     <p class="text-center">Pembina I</p>
-                 </div>
-								 <div class="col-md-4 text-center">
-										<img class="img-circle " src="images/PasFotoS.jpg" alt="Images" height="200px" width="200px" />
-										 <h3 class="text-center">Yasin Manganugrahana Karya</h3>
-										 <p class="text-center">Mahasiswa</p>
-								 </div>
-								 <div class="col-md-4 text-center">
-										<img class="img-circle " src="images/userS.png" alt="Images" height="200px" width="200px" />
-										 <h3 class="text-center">Muhammad Arief N S.T, M.T</h3>
-										 <p class="text-center">Pembina II</p>
-								 </div>
-             </div>
-         </div>
-     	</div>
+		<div class="navbar navbar-inverse" style="margin-bottom:0px">
+	    <div class="container-fluid">
+	        <div class="navbar-header">
+	            <a href="home.html" class="navbar-brand">
+								<img height="20" alt="Brand" src="images/iconsS.png">
+							</a>
+	        </div>
+	        <div>
+	            <ul class="nav navbar-nav">
+								 <li class="active"> <a href="home.html"><b>HOME</b></a> </li>
+								 <li> <a href="search.html"><b>SEARCH</b></a> </li>
+								 <li><a href="analisys.html"><b>ANALYSIS</b></a></li>
+	            </ul>
+	        </div>
+	    </div>
+  	</div>
+
+		<div class="section background-image" style="height:88%; width:100%; background-image:url('./images/bg3.jpg'); background-size:100%">
+			<div class="container">
+				 <div class="row">
+						 <div class="col-md-12 text-center">
+							 <br>
+							 <br>
+								 <strong>
+									 <h1 class="text text-danger">WELCOME TO SILO</h1>
+									 <p class="text text-danger"> CENTRAL LOGS DATA CENTER TELKOM UNIVERSITY </p>
+								 </strong>
+								 <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+									<!-- Indicators -->
+									<ol class="carousel-indicators">
+										<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+										<li data-target="#myCarousel" data-slide-to="1"></li>
+										<li data-target="#myCarousel" data-slide-to="2"></li>
+									</ol>
+
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner" role="listbox">
+										<div class="item active">
+										<h4>"This company is the best. I am so happy with the result!"<br><span style="font-style:normal;">Michael Roe, Vice President, Comment Box</span></h4>
+										</div>
+										<div class="item">
+											<h4>"One word... WOW!!"<br><span style="font-style:normal;">John Doe, Salesman, Rep Inc</span></h4>
+										</div>
+										<div class="item">
+											<h4>"Could I... BE any more happy with this company?"<br><span style="font-style:normal;">Chandler Bing, Actor, FriendsAlot</span></h4>
+										</div>
+									</div>
+
+									<!-- Left and right controls -->
+									<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+										<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+										<span class="sr-only">Previous</span>
+									</a>
+									<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+										<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+										<span class="sr-only">Next</span>
+									</a>
+								</div>
+								<br>
+								<br>
+								<a class="btn btn-lg btn-danger" href="search.html">Go to page search</a>
+						 </div>
+				 </div>
+			</div>
+		</div>
+
+   	<div class="section">
+			<div class="container-fluid">
+				<div class="panel panel-primary">
+					<div class="panel-heading text-center" style="font-size:16px"><strong>TEAM</strong></div>
+					<br>
+					<div class="container">
+	            <div class="row text-center">
+	                <div class="col-md-4 text-center">
+	 								 	 <img class="img-circle " src="images/userS.png" alt="Images" height="200px" width="200px" />
+	                    <h3 class="text-center">Fazmah Arif Yulianto S.T, M.T</h3>
+	                    <p class="text-center" style="font-size:12px">Pembina I</p>
+	                </div>
+	 							 <div class="col-md-4 text-center">
+	 									<img class="img-circle " src="images/PasFotoS.jpg" alt="Images" height="200px" width="200px" />
+	 									 <h3 class="text-center">Yasin Manganugrahana Karya</h3>
+	 									 <p class="text-center" style="font-size:12px">Mahasiswa</p>
+	 							 </div>
+	 							 <div class="col-md-4 text-center">
+	 									<img class="img-circle " src="images/userS.png" alt="Images" height="200px" width="200px" />
+	 									 <h3 class="text-center">Muhammad Arief N S.T, M.T</h3>
+	 									 <p class="text-center" style="font-size:12px">Pembina II</p>
+	 							 </div>
+	            </div>
+	        </div>
+				</div>
+			</div>
+   	</div>
+
+		<!--FOOTER-->
+		<div class="container-fluid bg-4">
+			<div class="row text-center">
+				<div class="col-md-12">
+					<br>
+					<a href="https://plus.google.com/u/1/101074421020102713192" type="button" class="btn btn-danger" name="gmail">
+						<span class="glyphicon glyphicon-envelope">&nbsp;Google</span>
+					</a>
+					<a href="https://bitbucket.org/cincun/" type="button" class="btn btn-danger" name="bitbucket">
+						<span class="glyphicon glyphicon-hdd">&nbsp;Bitbucket</span>
+					</a>
+					<a href="https://www.instagram.com/yasinmkarya/" type="button" class="btn btn-danger" name="instagram">
+						<span class="glyphicon glyphicon-camera">&nbsp;Instagram</span>
+					</a>
+					<a href="https://www.linkedin.com/in/yasin-manganugrahana-k-110b16a1?trk=nav_responsive_tab_profile_pic" type="button" class="btn btn-danger" name="linkeldin">
+						<span class="glyphicon glyphicon-user">&nbsp;Linkeldin</span>
+					</a>
+				</div>
+				<div class="col-md-12">
+					<br>
+					<h4 style="font-size:12px">Created by : @yasinmkarya</h4>
+					<br>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

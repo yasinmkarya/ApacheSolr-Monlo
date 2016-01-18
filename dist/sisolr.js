@@ -31,7 +31,7 @@ app.controller('search', function($scope, $http) {
     $scope.keyword = 'msg:*';
 
     function _getJSONP(start, cb) {
-        $http.jsonp(server + path + '/select?q=' + $scope.keyword + '&start=' + start + '&rows=99&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
+        $http.jsonp(server + path + '/select?q=' + $scope.keyword + '&start=' + start + '&rows=100&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
             .then(function(json) {
                 cb(json);
             });

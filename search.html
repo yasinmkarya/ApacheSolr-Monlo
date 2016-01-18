@@ -9,15 +9,16 @@
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="dist/sisolr.js" charset="utf-8"></script>
     <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="dist/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="images/iconsS.png" type="image/png">
+		<link href="dist/extendstyle.css" rel="stylesheet" type="text/css">
 </head>
 
 <body data-ng-app="Sisolr" data-ng-controller="search">
     <div class="navbar navbar-inverse">
         <div class="container-fluisd">
             <div class="navbar-header">
-                <a class="navbar-brand">
+                <a href="home.html" class="navbar-brand">
                     <img height="20" alt="Brand" src="images/iconsS.png" class="img-rounded">
                 </a>
             </div>
@@ -30,6 +31,8 @@
             </div>
         </div>
     </div>
+
+    <!--Main Page-->
     <div class="section">
       <div class="container">
           <div class="row">
@@ -38,28 +41,28 @@
               </div>
           </div>
           <div class="row">
-              <div class="col-md-offset-3 col-md-6">
-                  <form role="form" data-ng-submit="search()">
-                      <div class="form-group">
-                          <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Enter your keyword" data-ng-model="keyword">
-                              <span class="input-group-btn">
-                                  <button class="btn btn-danger" type="submit">Search</button>
-                              </span>
-                          </div>
-                          <br>
-                          Filter:&nbsp;
-                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('timegenerated:' + now() + '*')">Time</button>
-                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('syslogpriority-text:*')">Saverity</button>
-                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('hostname:*')">Hostname</button>
-                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('fromhost-ip:*')">Address</button>
-                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('programname:*')">User</button>
-                          <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('msg:*')">Message</button>
-                      </div>
-                  </form>
-              </div>
+            <div class="col-md-offset-3 col-md-6">
+                <form role="form" data-ng-submit="search()">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter your keyword" data-ng-model="keyword">
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="submit">Search</button>
+                            </span>
+                        </div>
+                        <br>
+                        Filter:&nbsp;
+                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('timegenerated:' + now() + '*')">Time</button>
+                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('syslogpriority-text:*')">Saverity</button>
+                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('hostname:*')">Hostname</button>
+                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('fromhost-ip:*')">Address</button>
+                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('programname:*')">User</button>
+                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('msg:*')">Message</button>
+                    </div>
+                </form>
+            </div>
           </div>
-      </div>
+        </div>
     <div class="container" style="width:auto">
         <div class="col-md-12">
             <div class="row">
@@ -114,6 +117,39 @@
             </div>
         </div>
     </div>
+
+   <!--FOOTER-->
+    <div class="container-fluid bg-4">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <br>
+          <a href="https://plus.google.com/u/1/101074421020102713192" type="button" class="btn btn-danger" name="gmail">
+            <span class="glyphicon glyphicon-envelope">&nbsp;Google</span>
+          </a>
+          <a href="https://bitbucket.org/cincun/" type="button" class="btn btn-danger" name="bitbucket">
+            <span class="glyphicon glyphicon-hdd">&nbsp;Bitbucket</span>
+          </a>
+          <a href="https://www.instagram.com/yasinmkarya/" type="button" class="btn btn-danger" name="instagram">
+            <span class="glyphicon glyphicon-camera">&nbsp;Instagram</span>
+          </a>
+          <a href="https://www.linkedin.com/in/yasin-manganugrahana-k-110b16a1?trk=nav_responsive_tab_profile_pic" type="button" class="btn btn-danger" name="linkeldin">
+            <span class="glyphicon glyphicon-user">&nbsp;Linkeldin</span>
+          </a>
+        </div>
+        <div class="col-md-12">
+          <br>
+          <h4 style="font-size:12px">Created by : @yasinmkarya</h4>
+          <br>
+        </div>
+      </div>
+    </div>
   </div>
-</body>
 </html>
+
+
+
+
+
+
+
+</body>
