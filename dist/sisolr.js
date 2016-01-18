@@ -60,6 +60,7 @@ app.controller('search', function($scope, $http) {
 
     $scope.search = function() {
         $scope.pageLevel = 0;
+        $scope.goToPage($scope.pageLevel + 1);
         if ($scope.keyword === '') {
             $scope.keyword = '&fq=*:*';
             _getJSONP(0, _view);
@@ -139,7 +140,6 @@ app.controller('analisys', function($scope, $http) {
             }
         });
         var ctx1 = document.getElementById("saverityDChart").getContext("2d");
-        console.log($scope.saverity);
         var saverityDChart = new Chart(ctx1).Doughnut(output);
     });
 
@@ -190,33 +190,39 @@ app.controller('analisys', function($scope, $http) {
                 }
             }
         });
-
         var ctx2 = document.getElementById("hostDChart").getContext("2d");
         var hostDChart = new Chart(ctx2).Doughnut(output);
     });
 
-    var data = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.5)",
-                strokeColor: "rgba(220,220,220,0.8)",
-                highlightFill: "rgba(220,220,220,0.75)",
-                highlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.5)",
-                strokeColor: "rgba(151,187,205,0.8)",
-                highlightFill: "rgba(151,187,205,0.75)",
-                highlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
+    _getJSONP('syslogpriority-text',function(json){
+      var dataJson = json.data.facet_counts.facet_fields['syslogpriority-text'];
+      var outputLabels = [],
+          outputData = [],
+          labels = [],
+          data = [];
 
-    var ctxBar = document.getElementById("barChart").getContext("2d");
-    var myBarChart = new Chart(ctxBar).Bar(data)  ;
+      dataJson.forEach(function(item, index){
+        if((index+1)%2 !== 0){
+          outputData[index/2] = dataJson[index+1];
+          outputLabels[index/2] =item;
+        }
+      });
+
+      var dataOutput = {
+          labels:outputLabels,
+          datasets:[
+            {
+              label: "Syslog Priority Text",
+              fillColor: _ctx_color[(Math.floor((Math.random()*6)+1)) % 7],
+              strokeColor: "rgba(220,220,220,0.8)",
+              highlightFill: _ctx_highlight[(Math.floor((Math.random()*6)+1)) % 6],
+              highlightStroke: "rgba(220,220,220,1)",
+              data: outputData
+            }
+          ]
+      };
+      var ctxBar = document.getElementById("barChart").getContext("2d");
+      var myBarChart= new Chart(ctxBar).Bar(dataOutput);
+    });
+
 });
