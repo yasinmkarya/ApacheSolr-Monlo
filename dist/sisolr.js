@@ -1,5 +1,5 @@
-var app = angular.module('Sisolr', []);
-var server = 'http://10.14.211.5:8983',
+var app = angular.module('Sisolr', ['ui.bootstrap','ui.bootstrap.datetimepicker', 'ngMessages']);
+var server = 'http://localhost:8080',
     path = '/solr/core0';
 
 function formatTgl(str) {
@@ -21,7 +21,27 @@ function formatTgl(str) {
     return format.date + '/' + format.month + '/' + format.year + ' ' + format.hour + ':' + format.minute + ':' + format.second;
 }
 
+function _formatTgl2(str) {
+    var tgl = new Date(str);
+    var format = {
+        date: tgl.getDate(),
+        month: tgl.getMonth() + 1,
+        year: tgl.getFullYear(),
+        hour: tgl.getHours(),
+        minute: tgl.getMinutes(),
+        second: tgl.getSeconds()
+    }
+
+    var _format = ['date', 'month', 'hour', 'minute', 'second'];
+    _format.forEach(function(x) {
+        if (format[x] < 10) format[x] = '0' + format[x];
+    });
+
+    return format.year + '-' + format.month + '-' + format.date + 'T' + format.hour + ':' + format.minute + ':' + format.second+ 'Z';
+}
+
 app.controller('search', function($scope, $http) {
+    var that = this;
     $scope.formatTgl = formatTgl;
     $scope.current = 0;
     $scope.currentNext = 0;
@@ -29,9 +49,30 @@ app.controller('search', function($scope, $http) {
     $scope.pageLevel = 0;
     $scope.data = {};
     $scope.keyword = '&fq=*:*';
+    $scope.startDate = new Date();
+    $scope.endDate = new Date();
+    $scope.ngMessages = '';
+
+    this.dates = {
+        date3: new Date(),
+        date4: new Date(),
+    };
+
+    this.open = {
+        date3: false,
+        date4: false,
+    };
+
+    this.openCalendar = function(e, date) {
+        that.open[date] = true;
+    };
+
+    $scope.startDate = that.dates.date3;
+    $scope.endDate.setHours($scope.startDate.getHours()+1);
 
     function _getJSONP(start, cb) {
-        $http.jsonp(server + path + '/select?q=*%3A*' + $scope.keyword + '&start=' + start + '&rows=100&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
+        $http.jsonp(server + path + '/select?q=*%3A*' + '&fq=timegenerated%3A['+ _formatTgl2($scope.startDate) +'+TO+'+ _formatTgl2($scope.endDate) +']'
+          + $scope.keyword + '&start=' + start +'&rows=100&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
             .then(function(json) {
                 cb(json);
             });
@@ -61,11 +102,22 @@ app.controller('search', function($scope, $http) {
     $scope.search = function() {
         $scope.pageLevel = 0;
         $scope.goToPage($scope.pageLevel + 1);
-        if ($scope.keyword === '') {
-            $scope.keyword = '&fq=*:*';
-            _getJSONP(0, _view);
-        } else {
-            _getJSONP(0, _view);
+        $scope.startDate = that.dates.date3;
+
+        console.log($scope.startDate);
+        var diffStartDate = $scope.startDate.getTime(),
+            diffEndDate = $scope.endDate.getTime();
+
+        if(diffEndDate - diffStartDate > 0 ){
+          if ($scope.keyword === '') {
+              $scope.keyword = '&fq=*:*';
+              _getJSONP(0, _view);
+          } else {
+              _getJSONP(0, _view);
+          }
+          $scope.ngMessages = ''
+        }else{
+          $scope.ngMessages = mindate;
         }
     }
 
@@ -224,5 +276,4 @@ app.controller('analisys', function($scope, $http) {
       var ctxBar = document.getElementById("barChart").getContext("2d");
       var myBarChart= new Chart(ctxBar).Bar(dataOutput);
     });
-
 });

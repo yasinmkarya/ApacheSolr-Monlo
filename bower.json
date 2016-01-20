@@ -22,6 +22,10 @@
     "bootstrap": "~3.3.6",
     "font-awesome": "fontawesome#~4.5.0",
     "angular": "~1.4.8",
-    "Chart.js": "~1.0.2"
+    "Chart.js": "~1.0.2",
+    "bootstrap-ui-datetime-picker": "~2.1.0"
+  },
+  "devDependencies": {
+    "angular-bootstrap": "~1.1.0"
   }
 }

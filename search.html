@@ -6,19 +6,22 @@
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
     <script src="dist/sisolr.js" charset="utf-8"></script>
     <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link rel="shortcut icon" href="images/iconsS.png" type="image/png">
+    <link rel="shortcut icon" href="images/logo2-icon.png" type="image/png">
 		<link href="dist/extendstyle.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class="body" data-ng-app="Sisolr" data-ng-controller="search">
+<body class="body" data-ng-app="Sisolr" data-ng-controller="search as ctrl">
     <div class="navbar navbar-inverse">
         <div class="container-fluisd">
             <div class="navbar-header">
                 <a href="home.html" class="navbar-brand">
-                    <img height="20" alt="Brand" src="images/iconsS.png" class="img-rounded">
+                    <img height="20" alt="Brand" src="images/logo2-icon-white.png">
                 </a>
             </div>
             <div>
@@ -34,34 +37,44 @@
     <!--Main Page-->
     <div class="section">
       <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <h1 class="text-center text-danger"><i class="fa fa-star fa-fw"></i>S I L O</h1>
-              </div>
+        <div class="row">
+          <div class="col-md-12">
+              <h1 class="text-center text-danger"><i class="fa fa-star fa-fw"></i>S I L O</h1>
           </div>
-          <div class="row">
             <div class="col-md-offset-3 col-md-6">
-                <form role="form" data-ng-submit="search()">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Enter your keyword" data-ng-model="keyword">
-                            <span class="input-group-btn">
-                                <button class="btn btn-danger" type="submit">Search</button>
-                            </span>
-                        </div>
-                        <br>
-                        Filter:&nbsp;
-                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('timegenerated:' + now() + '*')">Time</button>
-                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('syslogpriority-text:*')">Saverity</button>
-                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('hostname:*')">Hostname</button>
-                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('fromhost-ip:*')">Address</button>
-                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('programname:*')">User</button>
-                        <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('msg:*')">Message</button>
-                    </div>
-                </form>
+              <form role="form" data-ng-submit="search()">
+                  <div class="form-group">
+                      <p class="input-group">
+                        <input type="text" class="form-control" datetime-picker="MM/dd/yyyy HH:mm" data-ng-model="ctrl.dates.date3" is-open="ctrl.open.date3" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="ctrl.openCalendar($event, 'date3')"><i class="fa fa-calendar" style="font-size:20px"></i></button>
+                      </p>
+                      <p class="input-group">
+                        <input type="text" class="form-control" datetime-picker="MM/dd/yyyy HH:mm" data-ng-model="endDate" is-open="ctrl.open.date4" />
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="ctrl.openCalendar($event, 'date4')"><i class="fa fa-calendar" style="font-size:20px"></i></button>
+                      </p>
+                      <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Enter your keyword" data-ng-model="keyword">
+                          <span class="input-group-btn">
+                              <button class="btn btn-danger" type="submit">Search</button>
+                          </span>
+                      </div>
+                  </div>
+                  Filter:&nbsp;
+                  <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('syslogpriority-text:*')">Saverity</button>
+                  <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('hostname:*')">Hostname</button>
+                  <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('fromhost-ip:*')">Address</button>
+                  <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('programname:*')">User</button>
+                  <button type="button" class="btn btn-xs btn-default" data-ng-click="addQuery('msg:*')">Message</button>
+                  <div class="validation-messages" ng-messages="ngMessages">
+                    <div ng-message="mindate">Date is too early!</div>
+                  </div>
+              </form>
             </div>
-          </div>
         </div>
+      </div>
+    </div>
     <div class="container" style="width:auto">
         <div class="col-md-12">
             <div class="row">
@@ -78,10 +91,10 @@
                         </li>
                     </ul>
                 </div>
-                <table class="table table-condensed table-striped table-bordered" style="font-size:12px">
+                <table class="table table-condensed table-striped table-bordered" style="font-size:10px">
                     <thead>
                         <tr>
-                            <th width="10%">Time</th>
+                            <th width="8%">Time</th>
                             <th width="5%">Saverity</th>
                             <th width="10%">Hostname</th>
                             <th width=auto>Address</th>
