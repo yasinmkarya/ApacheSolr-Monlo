@@ -1,5 +1,5 @@
 var app = angular.module('Sisolr', ['ui.bootstrap','ui.bootstrap.datetimepicker', 'ngMessages']);
-var server = 'http://localhost:8080',
+var server = 'http://10.14.211.5:8983',
     path = '/solr/core0';
 
 function formatTgl(str) {
@@ -41,17 +41,24 @@ function _formatTgl2(str) {
 }
 
 app.controller('search', function($scope, $http) {
-    var that = this;
+    var that = this,
+        keyword = '';
     $scope.formatTgl = formatTgl;
     $scope.current = 0;
     $scope.currentNext = 0;
     $scope.currentPage = 1;
     $scope.pageLevel = 0;
     $scope.data = {};
-    $scope.keyword = '&fq=*:*';
     $scope.startDate = new Date();
     $scope.endDate = new Date();
+    $scope.startDate.setMonth($scope.endDate.getMonth()-3);
     $scope.ngMessages = '';
+    //Variable for form input in search//
+    $scope.formSaverity = '';
+    $scope.formHostname = '';
+    $scope.formAddress = '';
+    $scope.formUser = '';
+    $scope.formMsg = '';
 
     this.dates = {
         date3: new Date(),
@@ -67,12 +74,9 @@ app.controller('search', function($scope, $http) {
         that.open[date] = true;
     };
 
-    $scope.startDate = that.dates.date3;
-    $scope.endDate.setHours($scope.startDate.getHours()+1);
-
     function _getJSONP(start, cb) {
         $http.jsonp(server + path + '/select?q=*%3A*' + '&fq=timegenerated%3A['+ _formatTgl2($scope.startDate) +'+TO+'+ _formatTgl2($scope.endDate) +']'
-          + $scope.keyword + '&start=' + start +'&rows=100&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
+          + keyword + '&start=' + start +'&rows=100&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
             .then(function(json) {
                 cb(json);
             });
@@ -80,7 +84,6 @@ app.controller('search', function($scope, $http) {
 
     function _view(json) {
         $scope.data = json.data;
-
         $scope.paging = [];
 
         $scope.current = Math.ceil(($scope.data.response.numFound - ($scope.pageLevel * 100)) / 100);
@@ -101,23 +104,28 @@ app.controller('search', function($scope, $http) {
 
     $scope.search = function() {
         $scope.pageLevel = 0;
-        $scope.goToPage($scope.pageLevel + 1);
-        $scope.startDate = that.dates.date3;
 
-        console.log($scope.startDate);
         var diffStartDate = $scope.startDate.getTime(),
             diffEndDate = $scope.endDate.getTime();
 
         if(diffEndDate - diffStartDate > 0 ){
-          if ($scope.keyword === '') {
-              $scope.keyword = '&fq=*:*';
-              _getJSONP(0, _view);
-          } else {
-              _getJSONP(0, _view);
+          keyword = '';
+          if ($scope.formSaverity !== '') {
+              keyword = keyword+'&fq=syslogpriority-text:' + $scope.formSaverity;
           }
-          $scope.ngMessages = ''
-        }else{
-          $scope.ngMessages = mindate;
+          if ($scope.formHostname !== '') {
+              keyword = keyword+'&fq=hostname:' + $scope.formHostname;
+          }
+          if ($scope.formAddress !== '') {
+              keyword = keyword+'&fq=fromhost-ip:' + $scope.formAddress
+          }
+          if ($scope.formUser !== '') {
+              keyword = keyword+'&fq=programname:' + $scope.formUser;
+          }
+          if ($scope.formMsg !== '') {
+              keyword = keyword+'&fq=msg:' + $scope.formMsg;
+          }
+          _getJSONP(0, _view);
         }
     }
 
@@ -134,16 +142,15 @@ app.controller('search', function($scope, $http) {
     }
 
     $scope.addQuery = function(query) {
-        if ($scope.keyword === '' || $scope.keyword === '&fq=*:*') {
-            $scope.keyword = '&fq='+query;
+        if (keyword === '' || keyword === '&fq=*:*') {
+            keyword = '&fq='+query;
         } else {
-            $scope.keyword = $scope.keyword + '&fq=' + query;
+            keyword = keyword + '&fq=' + query;
         }
     }
 
     $scope.goToPage = function(number) {
         $scope.currentPage = number;
-        if ($scope.keyword === '') $scope.keyword = '&fq=*:*';
         _getJSONP(100 * (number - 1), _view);
     }
 

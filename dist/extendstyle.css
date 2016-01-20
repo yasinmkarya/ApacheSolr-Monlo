@@ -47,3 +47,12 @@
 .datetime-picker-dropdown > li.time-picker-menu div > table {
 
 }
+
+.header-table-red{
+  text-align:center;
+  padding:2px;
+  color: white;
+  text-shadow:0px 0px 5px rgba(0, 0, 0, ,3);
+  background-color: #d9534f;
+  border-bottom-color:#d43f3a;
+}
