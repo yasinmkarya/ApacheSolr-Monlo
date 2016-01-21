@@ -111,19 +111,19 @@ app.controller('search', function($scope, $http) {
         if(diffEndDate - diffStartDate > 0 ){
           keyword = '';
           if ($scope.formSaverity !== '') {
-              keyword = keyword+'&fq=syslogpriority-text:' + $scope.formSaverity;
+              keyword = keyword+'&fq=syslogpriority-text:' + $scope.formSaverity.toLowerCase();
           }
           if ($scope.formHostname !== '') {
-              keyword = keyword+'&fq=hostname:' + $scope.formHostname;
+              keyword = keyword+'&fq=hostname:' + $scope.formHostname.toLowerCase();
           }
           if ($scope.formAddress !== '') {
-              keyword = keyword+'&fq=fromhost-ip:' + $scope.formAddress
+              keyword = keyword+'&fq=fromhost-ip:' + $scope.formAddress.toLowerCase();
           }
           if ($scope.formUser !== '') {
-              keyword = keyword+'&fq=programname:' + $scope.formUser;
+              keyword = keyword+'&fq=programname:' + $scope.formUser.toLowerCase();
           }
           if ($scope.formMsg !== '') {
-              keyword = keyword+'&fq=msg:' + $scope.formMsg;
+              keyword = keyword+'&fq=msg:' + $scope.formMsg.toLowerCase();
           }
           _getJSONP(0, _view);
         }
