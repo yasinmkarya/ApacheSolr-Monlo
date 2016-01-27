@@ -1,5 +1,5 @@
 var app = angular.module('Sisolr', ['ui.bootstrap','ui.bootstrap.datetimepicker', 'ngMessages']);
-var server = 'http://10.14.211.5:8983',
+var server = 'http://127.0.0.1:8080',
     path = '/solr/core0';
 
 function formatTgl(str) {
@@ -127,6 +127,8 @@ app.controller('search', function($scope, $http) {
           }
           _getJSONP(0, _view);
         }
+
+        $scope.currentPage = 1;    
     }
 
     $scope.now = function() {
