@@ -19,104 +19,128 @@
 
 <body class="body" data-ng-app="Sisolr" data-ng-controller="analisys">
     <div class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="home.html" class="navbar-brand">
-                    <img height="20" alt="Brand" src="images/logo2-icon-white.png">
-                </a>
-            </div>
-            <div>
-                <ul class="nav navbar-nav">
-                    <li><a href="home.html"><b>HOME</b></a></li>
-                    <li><a href="search.html"><b>SEARCH</b></a></li>
-                    <li class="active"><a href="analisys.html"><b>ANALYSIS</b></a></li>
-                </ul>
-            </div>
-        </div>
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <a href="home.html" class="navbar-brand">
+                <img height="20" alt="Brand" src="images/logo2-icon-white.png">
+              </a>
+          </div>
+          <div>
+              <ul class="nav navbar-nav">
+                 <li> <a href="home.html"><b>HOME</b></a> </li>
+                 <li> <a href="search.html"><b>SEARCH</b></a> </li>
+                 <li class="active"> <a href="analisys.html"><b>ANALYSIS</b></a></li>
+              </ul>
+          </div>
+      </div>
     </div>
-    <div class="section">
-        <div class="container-fluid">
-          <div class="row">
-              <div class="col-md-12" style="text-align:center">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">General</div>
-                      <div class="panel-body">
-                          <canvas id="barChart" width="1200" height="400"></canvas>
-                      </div>
+    <!--Chart-->
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12" style="text-align:center">
+              <div class="panel panel-default">
+                  <div class="panel-heading">General</div>
+                  <div class="panel-body">
+                      <canvas id="barChart" width="1200" height="400"></canvas>
                   </div>
               </div>
           </div>
-          <div class="row">
-              <!--Pie Chart-->
-              <div class="col-md-4" style="text-align:center">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">Syslog Priority Text</div>
-                      <div class="panel-body">
-                          <canvas id="saverityDChart" width="300" height="300"></canvas>
-                      </div>
-                  </div>
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr style="color: white; text-shadow: 0px 0px 5px rgba(0, 0, 0, ,3);background-color: rgb(50, 150, 255)" >
-                        <th style="text-align:center">Saverity Type</th>
-                        <th style="text-align:center">Count</th>
+      </div>
+      <!--Pie Chart-->
+      <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            <div class="panel panel-default">
+                <div class="panel-heading">Program Name</div>
+                <div class="panel-body">
+                    <canvas id="prognameDChart" width="300" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="text-align:center">
+            <div class="panel panel-default">
+                <div class="panel-heading">Syslog Priority Text</div>
+                <div class="panel-body">
+                    <canvas id="saverityDChart" width="300" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="text-align:center">
+            <div class="panel panel-default">
+                <div class="panel-heading">Hostname</div>
+                <div class="panel-body">
+                    <canvas id="hostDChart" width="300" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!--Table-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">TABLE</div>
+            <div class="panel-body">
+              <!--Table Program Name-->
+              <div class="col-md-4">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr style="color: white; text-shadow: 0px 0px 5px rgba(0, 0, 0, ,3);background-color: rgb(50, 150, 255)">
+                      <th style="text-align:center">User</th>
+                      <th style="text-align:center">Count</th>
+                    </tr>
+                    <tbody style="font-size:14px">
+                      <tr data-ng-repeat="line in user track by $index">
+                        <th>{{line.name}}</th>
+                        <th>{{line.nameCount}}</th>
                       </tr>
-                      <tbody style="font-size:14px">
-                        <tr data-ng-repeat="line in saverity track by $index">
-                          <th><span class="label" data-ng-class="{'label-default': line.type === 'debug', 'label-info': line.type === 'info', 'label-warning': line.type === 'warning' || line.type === 'notice', 'label-danger': line.type === 'err' || line.type === 'crit'}">{{line.type}}</span></th>
-                          <th>{{line.count}}</th>
-                        </tr>
-                      </tbody>
-                    </thead>
-                  </table>
+                    </tbody>
+                  </thead>
+                </table>
               </div>
-              <div class="col-md-4" style="text-align:center">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">Program Name</div>
-                      <div class="panel-body">
-                          <canvas id="prognameDChart" width="300" height="300"></canvas>
-                      </div>
-                  </div>
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr style="color: white; text-shadow: 0px 0px 5px rgba(0, 0, 0, ,3);background-color: rgb(50, 150, 255)">
-                        <th style="text-align:center">User</th>
-                        <th style="text-align:center">Count</th>
+              <!--[End] Table Program Name-->
+              <!--Table Saverity Type-->
+              <div class="col-md-4">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr style="color: white; text-shadow: 0px 0px 5px rgba(0, 0, 0, ,3);background-color: rgb(50, 150, 255)" >
+                      <th style="text-align:center">Saverity Type</th>
+                      <th style="text-align:center">Count</th>
+                    </tr>
+                    <tbody style="font-size:14px">
+                      <tr data-ng-repeat="line in saverity track by $index">
+                        <th><span class="label" data-ng-class="{'label-default': line.type === 'debug', 'label-info': line.type === 'info', 'label-warning': line.type === 'warning' || line.type === 'notice', 'label-danger': line.type === 'err' || line.type === 'crit'}">{{line.type}}</span></th>
+                        <th>{{line.count}}</th>
                       </tr>
-                      <tbody style="font-size:14px">
-                        <tr data-ng-repeat="line in user track by $index">
-                          <th>{{line.name}}</th>
-                          <th>{{line.nameCount}}</th>
-                        </tr>
-                      </tbody>
-                    </thead>
-                  </table>
+                    </tbody>
+                  </thead>
+                </table>
               </div>
-              <div class="col-md-4" style="text-align:center">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">Hostname</div>
-                      <div class="panel-body">
-                          <canvas id="hostDChart" width="300" height="300"></canvas>
-                      </div>
-                  </div>
-                  <table class="table table-bordered">
-                    <thead>
-                      <tr style="color: white; text-shadow: 0px 0px 5px rgba(0, 0, 0, ,3);background-color: rgb(50, 150, 255)">
-                        <th style="text-align:center">Hostname</th>
-                        <th style="text-align:center">Count</th>
+              <!--[End] Table Saverity-->
+              <!--Table Hostname-->
+              <div class="col-md-4">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr style="color: white; text-shadow: 0px 0px 5px rgba(0, 0, 0, ,3);background-color: rgb(50, 150, 255)">
+                      <th style="text-align:center">Hostname</th>
+                      <th style="text-align:center">Count</th>
+                    </tr>
+                    <tbody style="font-size:14px">
+                      <tr data-ng-repeat="line in host track by $index">
+                        <th>{{line.hostname}}</th>
+                        <th>{{line.hostCount}}</th>
                       </tr>
-                      <tbody style="font-size:14px">
-                        <tr data-ng-repeat="line in host track by $index">
-                          <th>{{line.hostname}}</th>
-                          <th>{{line.hostCount}}</th>
-                        </tr>
-                      </tbody>
-                    </thead>
-                  </table>
+                    </tbody>
+                  </thead>
+                </table>
               </div>
+              <!--[End] Table Hostname-->
+            </div>
           </div>
         </div>
+      </div>
     </div>
+    <!--[End] Table-->
     <!--FOOTER-->
     <div class="container-fluid bg-4">
       <div class="row text-center">
