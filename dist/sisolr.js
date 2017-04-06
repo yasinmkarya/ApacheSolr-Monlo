@@ -127,12 +127,6 @@ app.controller('search', function($scope, $http) {
           }
           _getJSONP(0, _view);
         }
-
-<<<<<<< HEAD
-        $scope.currentPage = 1;
-=======
-        $scope.currentPage = 1;    
->>>>>>> 243803312e73185e25296a3fbaecfe5d44c0e56e
     }
 
     $scope.now = function() {
