@@ -1,5 +1,5 @@
 var app = angular.module('Sisolr', ['ui.bootstrap','ui.bootstrap.datetimepicker', 'ngMessages']);
-var server = 'http://127.0.0.1:8080',
+var server = 'http://31.220.58.75:8983',
     path = '/solr/core0';
 
 function formatTgl(str) {
