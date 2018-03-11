@@ -12,8 +12,8 @@
     <script src="dist/sisolr.js" charset="utf-8"></script>
     <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="bower_components/extendstyle.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="images/logo2-icon.png" type="image/png">
-		<link href="dist/extendstyle.css" rel="stylesheet" type="text/css">
 </head>
 
 <body class="body" data-ng-app="Sisolr" data-ng-controller="search as ctrl">
@@ -26,7 +26,7 @@
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li><a href="home.html"><b>HOME</b></a></li>
+                    <li><a href="index.html"><b>HOME</b></a></li>
                     <li class="active"><a href="search.html"><b>SEARCH</b></a></li>
                     <li><a href="analisys.html"><b>ANALYSIS</b></a></li>
                 </ul>
@@ -41,6 +41,7 @@
           <div class="col-md-12">
               <h1 class="text-center text-danger"><i class="fa fa-star fa-fw"></i>S I L O</h1>
           </div>
+            <!--Input Search Function-->
             <div class="col-md-offset-3 col-md-6">
               <form role="form" data-ng-submit="search()">
                   <div class="form-group">
@@ -56,6 +57,7 @@
                         </span>
                         <input type="text" class="form-control" datetime-picker="MM/dd/yyyy HH:mm" data-ng-model="endDate" is-open="ctrl.open.date4" />
                       </div>
+
                       <!--Input Form (Hostname, Saverity, Messages, User, And Address)-->
                       <p>
                         <div class="row">
@@ -88,15 +90,16 @@
                         </div>
                       </p>
                   </div>
-
               </form>
             </div>
+            <!--[END]Input Search Function-->
         </div>
       </div>
     </div>
    <!--[END] Main Page-->
+
+   <!--Table result query-->
    <div class="container" style="width:auto">
-     <!--Table result query-->
      <div class="col-md-12">
          <div class="row">
              <div style="text-align: center;">
@@ -115,7 +118,7 @@
              <table class="table table-condensed table-striped table-bordered" style="font-size:10px">
                  <thead>
                      <tr>
-                         <th class="header-table-red" width="8%">Time</th>
+                         <th class="header-table-red" width="9%">Time</th>
                          <th class="header-table-red" width="5%">Saverity</th>
                          <th class="header-table-red" width="7%">Hostname</th>
                          <th class="header-table-red" width="7%">Address</th>
@@ -151,33 +154,36 @@
              </div>
          </div>
      </div>
-     <!--[End] Table result query-->
    </div>
-   <!--FOOTER-->
-    <div class="container-fluid bg-4">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <br>
-          <a href="https://plus.google.com/u/1/101074421020102713192" type="button" class="btn btn-danger" name="gmail">
-            <span class="glyphicon glyphicon-envelope">&nbsp;Google</span>
-          </a>
-          <a href="https://bitbucket.org/cincun/" type="button" class="btn btn-danger" name="bitbucket">
-            <span class="glyphicon glyphicon-hdd">&nbsp;Bitbucket</span>
-          </a>
-          <a href="https://www.instagram.com/yasinmkarya/" type="button" class="btn btn-danger" name="instagram">
-            <span class="glyphicon glyphicon-camera">&nbsp;Instagram</span>
-          </a>
-          <a href="https://www.linkedin.com/in/yasin-manganugrahana-k-110b16a1?trk=nav_responsive_tab_profile_pic" type="button" class="btn btn-danger" name="linkeldin">
-            <span class="glyphicon glyphicon-user">&nbsp;Linkeldin</span>
-          </a>
-        </div>
-        <div class="col-md-12">
-          <br>
-          <h4 style="font-size:12px">Created by : @yasinmkarya</h4>
-          <br>
-        </div>
-      </div>
-    </div>
+   <!--[End] Table result query-->
+
+   <!--Footer-->
+   <div class="container-fluid bg-4">
+     <div class="row text-center">
+       <div class="col-md-12">
+         <br>
+         <a href="https://plus.google.com/u/1/101074421020102713192" type="button" class="btn btn-danger" name="gmail">
+           <span class="glyphicon glyphicon-envelope">&nbsp;Google</span>
+         </a>
+         <a href="https://bitbucket.org/cincun/" type="button" class="btn btn-danger" name="bitbucket">
+           <span class="glyphicon glyphicon-hdd">&nbsp;Bitbucket</span>
+         </a>
+         <a href="https://www.instagram.com/yasinmkarya/" type="button" class="btn btn-danger" name="instagram">
+           <span class="glyphicon glyphicon-camera">&nbsp;Instagram</span>
+         </a>
+         <a href="https://www.linkedin.com/in/yasin-manganugrahana-k-110b16a1?trk=nav_responsive_tab_profile_pic" type="button" class="btn btn-danger" name="linkeldin">
+           <span class="glyphicon glyphicon-user">&nbsp;Linkeldin</span>
+         </a>
+       </div>
+       <div class="col-md-12">
+         <br>
+         <h4 style="font-size:12px">Created by : @yasinmkarya</h4>
+         <br>
+       </div>
+     </div>
+   </div>
+   <!--[End] Footer-->
+
   </div>
 </html>
 </body>

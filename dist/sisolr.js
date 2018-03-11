@@ -76,7 +76,7 @@ app.controller('search', function($scope, $http) {
 
     function _getJSONP(start, cb) {
         $http.jsonp(server + path + '/select?q=*%3A*' + '&fq=timegenerated%3A['+ _formatTgl2($scope.startDate) +'+TO+'+ _formatTgl2($scope.endDate) +']'
-          + keyword + '&start=' + start +'&rows=100&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
+          + keyword + '&start=' + start +'&rows=20&sort=timegenerated+desc&wt=json&json.wrf=JSON_CALLBACK')
             .then(function(json) {
                 cb(json);
             });
